@@ -1,0 +1,54 @@
+==================
+Comment and blank lines before Imports
+==================
+' café license
+
+Imports System
+
+Public Class Service
+End Class
+
+---
+
+(source_file
+  (comment)
+  (blank_line)
+  (blank_line)
+  (imports_statement
+    (namespace_name
+      (identifier)))
+  (blank_line)
+  (type_declaration
+    (class_block
+      (modifiers
+        (modifier))
+      (identifier))))
+
+==================
+Comments between Options and Imports
+==================
+' license
+Option Strict On
+
+' dependencies
+Imports System
+
+Module Service
+End Module
+
+---
+
+(source_file
+  (comment)
+  (blank_line)
+  (option_statements)
+  (blank_line)
+  (comment)
+  (blank_line)
+  (imports_statement
+    (namespace_name
+      (identifier)))
+  (blank_line)
+  (type_declaration
+    (module_block
+      (identifier))))

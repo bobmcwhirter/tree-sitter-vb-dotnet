@@ -20,6 +20,7 @@ module.exports = grammar({
 
   
   conflicts: $ => [
+    [$.source_file],
     [$.type, $.invocation],
     [$.type] ,
     [$.new_expression] ,
@@ -41,8 +42,15 @@ module.exports = grammar({
   rules: {
     
     source_file: $ => seq(
-    optional($.option_statements),
-    repeat($.imports_statement),
+    repeat(alias($._terminator, $.blank_line)),
+    optional(seq(
+      $.option_statements,
+      repeat(alias($._terminator, $.blank_line))
+    )),
+    repeat(seq(
+      $.imports_statement,
+      repeat(alias($._terminator, $.blank_line))
+    )),
     repeat(choice(
       $.attribute_block,
       $.namespace_block,
